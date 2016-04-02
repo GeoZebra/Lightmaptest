@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{3A51CF32-293C-43C0-31BA-F1E04EF9D4FF}") = "lightmapTest", "Assembly-CSharp.csproj", "{0A79C2BD-4284-F960-EACA-FA1211157837}"
+EndProject
+Project("{3A51CF32-293C-43C0-31BA-F1E04EF9D4FF}") = "lightmapTest", "Assembly-CSharp-Editor.csproj", "{C617E98B-D256-BFB3-BFC5-5CAE419ABDE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A79C2BD-4284-F960-EACA-FA1211157837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A79C2BD-4284-F960-EACA-FA1211157837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A79C2BD-4284-F960-EACA-FA1211157837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A79C2BD-4284-F960-EACA-FA1211157837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C617E98B-D256-BFB3-BFC5-5CAE419ABDE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C617E98B-D256-BFB3-BFC5-5CAE419ABDE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C617E98B-D256-BFB3-BFC5-5CAE419ABDE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C617E98B-D256-BFB3-BFC5-5CAE419ABDE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
