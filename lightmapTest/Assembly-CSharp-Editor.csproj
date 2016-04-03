@@ -132,7 +132,7 @@
      <None Include="Assets\Alloy\Shaders\Features\Rim2.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\Glass HighQuality.shader" />
      <None Include="Assets\Alloy\Shaders\Features\Rim.cginc" />
-     <None Include="Assets\_ProjectRoot\Shader\ScreenIlluminanceDebuger.shader" />
+     <None Include="Assets\ScreenIlluminanceDebugger\ScreenIlluminanceDebuger.shader" />
      <None Include="Assets\Alloy\Shaders\Definitions\OrientedCore.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Core\Terrain 4Splat.shader" />
      <None Include="Assets\Alloy\Shaders\Lighting\Eyeball.cginc" />

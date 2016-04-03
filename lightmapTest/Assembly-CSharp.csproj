@@ -47,7 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Alloy\Scripts\AlloyUtils.cs" />
      <Compile Include="Assets\Alloy\Scripts\AreaLight\AlloyAreaLight.cs" />
-     <Compile Include="Assets\_ProjectRoot\Scripts\ScreenIlluminanceDebuger.cs" />
+     <Compile Include="Assets\ScreenIlluminanceDebugger\ScreenIlluminanceDebuger.cs" />
      <None Include="Assets\Alloy\Shaders\Definitions\Unlit.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\TriPlanar Lite.shader" />
      <None Include="Assets\Alloy\Shaders\Lighting\Transmission.cginc" />
@@ -105,7 +105,7 @@
      <None Include="Assets\Alloy\Shaders\Features\Rim2.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\Glass HighQuality.shader" />
      <None Include="Assets\Alloy\Shaders\Features\Rim.cginc" />
-     <None Include="Assets\_ProjectRoot\Shader\ScreenIlluminanceDebuger.shader" />
+     <None Include="Assets\ScreenIlluminanceDebugger\ScreenIlluminanceDebuger.shader" />
      <None Include="Assets\Alloy\Shaders\Definitions\OrientedCore.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Core\Terrain 4Splat.shader" />
      <None Include="Assets\Alloy\Shaders\Lighting\Eyeball.cginc" />
