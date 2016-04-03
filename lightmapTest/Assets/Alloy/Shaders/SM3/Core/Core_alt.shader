@@ -9,7 +9,9 @@ Properties {
 	_exLMIntensity ("'LM Intensity' {}", Float) = 1
 	_exLmAOeffect ("'LM ao effect' {}", Float) = 0
 	_unityDiffuseLMEffect ("'Unity Diffuse LM Effect' {}", Float) = 1
+	_exLM_HDRcoef("'RGBM HDR coef' {}", vector) = (40,2.2,0,0)
 	[Toggle(_USEUV1_ON)]_useUV1  ("'Use UV1 for LM' {Toggle:{On:{}, Off:{}}}", Float) = 0
+	[Toggle(_LM_USE_RGBM_ON)]_useRGBM  ("'use RGBM Format' {Toggle:{On:{}, Off:{}}}", Float) = 1
 
 	// Settings
 	_Mode ("'Rendering Mode' {RenderingMode:{Opaque:{_Cutoff}, Cutout:{}, Fade:{_Cutoff}, Transparent:{_Cutoff}}}", Float) = 0

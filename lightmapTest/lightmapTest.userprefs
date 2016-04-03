@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Alloy\Shaders\Framework\ExternalLightmap.cginc">
+    <Files>
+      <File FileName="Assets\Alloy\Shaders\SM3\Core\Core_alt.shader" Line="12" Column="52" />
+      <File FileName="Assets\Alloy\Shaders\Framework\ExternalLightmap.cginc" Line="18" Column="1" />
+      <File FileName="Assets\_ProjectRoot\Shader\UnlitShader.shader" Line="20" Column="20" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
