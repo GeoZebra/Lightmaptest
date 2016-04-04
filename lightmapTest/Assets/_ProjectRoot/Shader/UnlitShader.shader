@@ -2,10 +2,13 @@
 {
 	Properties
 	{
-		_MainTex ("Texture", 2D) = "white" {}
+		_externLightmap ("Texture", 2D) = "white" {}
 		uv01("uv channel",float) = 0
 		_col("Color", Color) = (1,1,1,1)
 		//hdrCoef("HDR float",vector) = (1,1,1,1)
+		[Toggle(FILL_WITH_RED)]
+        _FillWithRed ("Fill With Red", Float) = 0
+
 	}
 	SubShader
 	{
@@ -21,6 +24,7 @@
 			#pragma multi_compile_fog
 			
 			#include "UnityCG.cginc"
+		 	#pragma shader_feature FILL_WITH_RED
 
 			struct appdata
 			{
@@ -36,7 +40,7 @@
 				float4 vertex : SV_POSITION;
 			};
 
-			sampler2D _MainTex;
+			sampler2D _externLightmap;
 			float4 _MainTex_ST;
 			float uv01;
 
@@ -58,9 +62,15 @@
 				// sample the texture
 
 				float2 uv = uv01 == 0? i.uv.xy : i.uv.zw;
-				fixed4 col = tex2D(_MainTex, uv);
+				fixed4 col = tex2D(_externLightmap, uv);
 
 				float4 hdrColor =1;
+
+				 #ifdef FILL_WITH_RED
+                	return float4(1, 0, 0, 1);
+            	#else
+                	return (float4)1;
+            	#endif
 
 				hdrColor.rgb = DecodeLightmapRGBM( col, hdrCoef );
 				// apply fog

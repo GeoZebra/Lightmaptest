@@ -2,16 +2,21 @@
 // Copyright 2013-2015 RUST LLC.
 // http://www.alloy.rustltd.com/
 
-Shader "Alloy/Core_alt" {
+Shader "Alloy/Core-ExternalLightmap" {
 Properties {
 
+	[Toggle(EXLIGHTMAP)] 
+        _exlightmap ("'External Lightamp' {Feature:{240,128,0}}", Float) = 0    
 	_externLightmap ("'ExternalLightmap' {}", 2D) = "Black" {}   
 	_exLMIntensity ("'LM Intensity' {}", Float) = 1
 	_exLmAOeffect ("'LM ao effect' {}", Float) = 0
-	_unityDiffuseLMEffect ("'Unity Diffuse LM Effect' {}", Float) = 1
+	_unityDiffuseLMEffect ("'Unity Diffuse LM Effect' {}", Float) = 0
 	_exLM_HDRcoef("'RGBM HDR coef' {}", vector) = (40,2.2,0,0)
-	[Toggle(_USEUV1_ON)]_useUV1  ("'Use UV1 for LM' {Toggle:{On:{}, Off:{}}}", Float) = 0
-	[Toggle(_LM_USE_RGBM_ON)]_useRGBM  ("'use RGBM Format' {Toggle:{On:{}, Off:{}}}", Float) = 1
+	[Toggle]
+	_LmUseUV1  ("'Use UV1 for LM' {Toggle:{}}", Float) = 0
+	[Toggle]
+	_LM_Format_RGBM  ("'use RGBM Format' {Toggle:{}}", Float) = 1
+
 
 	// Settings
 	_Mode ("'Rendering Mode' {RenderingMode:{Opaque:{_Cutoff}, Cutout:{}, Fade:{_Cutoff}, Transparent:{_Cutoff}}}", Float) = 0
@@ -40,9 +45,9 @@ Properties {
 	// Main Physical Properties
 	_MainPhysicalProperties ("'Main Physical Properties' {Section:{126, 66, 41}}", Float) = 0
 	[LM_Metallic]
-	_Metal ("'Metallic' {Min:0, Max:1}", Float) = 1
+	_Metal ("'Metallic' {Min:0, Max:1}", Float) = 0.1
 	_Specularity ("'Specularity' {Min:0, Max:1}", Float) = 1
-	_Roughness ("'Roughness' {Min:0, Max:1}", Float) = 1
+	_Roughness ("'Roughness' {Min:0, Max:1}", Float) = 0.5
 	_Occlusion ("'Occlusion Strength' {Min:0, Max:1}", Float) = 1
 	_BumpScale ("'Normal Strength' {}", Float) = 1
 	
@@ -137,7 +142,7 @@ Properties {
 	_DissolveCutoff ("'Cutoff' {Min:0, Max:1}", Float) = 0
 	[Gamma]
 	_DissolveGlowWeight ("'Glow Weight' {Min:0, Max:1}", Float) = 1
-	_DissolveEdgeWidth ("'Glow Width' {Min:0, Max:1}", Float) = 0.01
+	_DissolveEdgeWidth ("'Glow Width' {Min:0, Max:1}", Float) = 0.01 
 }
 
 SubShader {
@@ -171,6 +176,10 @@ SubShader {
 		
 		#pragma multi_compile_fwdbase
 		#pragma multi_compile_fog
+		#pragma multi_compile _FORMAT_RGBM _FORMAT_RGB
+
+		#pragma shader_feature EXLIGHTMAP
+	
 			
 		#pragma vertex AlloyVertexForwardBase
 		#pragma fragment AlloyFragmentForwardBase
@@ -261,12 +270,14 @@ SubShader {
 		#pragma shader_feature _DISSOLVE_ON
 		
 		#pragma multi_compile_prepassfinal
+
+		#pragma shader_feature EXLIGHTMAP
 		
 		#pragma vertex AlloyVertexDeferred
 		#pragma fragment AlloyFragmentDeferred
 		
 		#define UNITY_PASS_DEFERRED
-		
+		 
 		#include "Assets/Alloy/Shaders/Definitions/Core.cginc"
 		#include "Assets/Alloy/Shaders/Passes/Deferred.cginc"
 

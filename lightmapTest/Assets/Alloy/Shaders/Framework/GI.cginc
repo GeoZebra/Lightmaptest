@@ -121,10 +121,13 @@ half3 AlloyGlobalIllumination(
 	gi.indirect.specular = UnityGI_IndirectSpecular(d, 1.0h, s.normalWorld, g);
 #endif
 
+#ifdef EXLIGHTMAP
 	half3 externalLightmapGI = ExternalLighmapGI(s.albedo, s.uv01, s.ambientOcclusion);
 	gi.indirect.diffuse *= _unityDiffuseLMEffect;
-	
 	return AlloyIndirectFromUnityGi(s, gi) + externalLightmapGI;
+#endif
+	
+	return AlloyIndirectFromUnityGi(s, gi);
 }
 
 #endif // ALLOY_FRAMEWORK_GI_CGINC
