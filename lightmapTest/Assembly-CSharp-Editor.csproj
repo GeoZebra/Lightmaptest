@@ -185,7 +185,7 @@
      <None Include="Assets\Alloy\Shaders\SM3\Core\Terrain 4Splat TriPlanar.shader" />
      <None Include="Assets\Alloy\Shaders\Definitions\Hair.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Human\Eye Occlusion.shader" />
-     <None Include="Assets\Alloy\Shaders\SM3\Core\Core_alt.shader" />
+     <None Include="Assets\Alloy\Shaders\SM3\Core\Core_externalLightmap.shader" />
      <None Include="Assets\Alloy\Shaders\Framework\TriPlanarSplat.cginc" />
      <None Include="Assets\Alloy\Shaders\Passes\Meta.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Core\Prototyping.shader" />

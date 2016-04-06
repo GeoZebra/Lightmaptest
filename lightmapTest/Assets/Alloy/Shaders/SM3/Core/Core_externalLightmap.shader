@@ -2,7 +2,7 @@
 // Copyright 2013-2015 RUST LLC.
 // http://www.alloy.rustltd.com/
 
-Shader "Alloy/Core-ExternalLightmap" {  
+Shader "Alloy/Core/ExternalLightmap/metallic-Roghness" {  
 Properties {
 
 

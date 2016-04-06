@@ -77,7 +77,7 @@ void AlloySurface(
 		// specularity setup
 		material = AlloySampleBaseMaterial(s);
 		s.f0 = material.rgb * _Specularity;
-		s.roughness = material.a * _Roughness;
+		s.roughness = (1 - material.a) * _Roughness;
 
 	#endif
 	s.normalTangent = AlloySampleBaseBump(s);

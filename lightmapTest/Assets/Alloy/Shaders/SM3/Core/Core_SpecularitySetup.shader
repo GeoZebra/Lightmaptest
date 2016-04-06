@@ -2,7 +2,7 @@
 // Copyright 2013-2015 RUST LLC.
 // http://www.alloy.rustltd.com/
 
-Shader "Alloy/Core-SpecularitySetup" {   
+Shader "Alloy/ExternalLightmap/Specularity-Glossiness" {   
 Properties {
 
 
@@ -51,9 +51,9 @@ Properties {
 	_LM_Format_RGBM  ("'use RGBM Format' {Toggle:{}}", Float) = 1 
 
 	[Toggle(_SPEC_ROUGH_SETUP)] 
-    _specRoughSetup("'Specularity Roughness Setup' {Feature:{255,0,0}}", Float) = 0   
+    _specRoughSetup("'Specularity Glossiness Setup' {Feature:{255,0,0}}", Float) = 0   
     [LM_Metallic]
- 	_SpecTex ("'Specularity(RGB) Roughness(A)' {Visualize:{R, G, B, A}, Parent:_MainTex}", 2D) = "white" {}
+ 	_SpecTex ("'Specularity(RGB) Glossiness(A)' {Visualize:{R, G, B, A}, Parent:_MainTex}", 2D) = "white" {}
 	 
 	// Parallax Properties
 	[Toggle(_PARALLAX_ON)]
