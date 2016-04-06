@@ -50,6 +50,7 @@
      <Compile Include="Assets\ScreenIlluminanceDebugger\ScreenIlluminanceDebuger.cs" />
      <Compile Include="Assets\UnitySSR\Demo\Scripts\FreeCamera.cs" />
      <Compile Include="Assets\UnitySSR\Scripts\unitySSR.cs" />
+     <Compile Include="Assets\_ProjectRoot\Scripts\ChannelMixer.cs" />
      <None Include="Assets\Alloy\Shaders\Definitions\Unlit.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\TriPlanar Lite.shader" />
      <None Include="Assets\Alloy\Shaders\Lighting\Transmission.cginc" />
@@ -139,6 +140,7 @@
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\Oriented Core.shader" />
      <None Include="Assets\Alloy\Shaders\Definitions\Eyeball.cginc" />
      <None Include="Assets\Alloy\Shaders\SM3\Human\Hair HighQuality SingleSided.shader" />
+     <None Include="Assets\Alloy\Shaders\SM3\Core\Core_SpecularitySetup.shader" />
      <None Include="Assets\Alloy\Shaders\SM3\Specialist\Oriented Blend.shader" />
      <None Include="Assets\Alloy\Shaders\Framework\Particle.cginc" />
      <None Include="Assets\Alloy\Shaders\Framework\Definition.cginc" />

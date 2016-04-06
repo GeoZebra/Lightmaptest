@@ -253,35 +253,57 @@ half3 AlloySpecularityToF0(
 void AlloySetPbrData(
 	inout AlloySurfaceDesc s) 
 {
-	half metallicInv = 1.0h - s.metallic;
-	half3 dielectricF0 = AlloySpecularityToF0(s.specularity);
-	
-	// Ensures energy-conserving color when using weird detail modes.
-	half3 baseColor = min(s.baseColor, half3(1.0h, 1.0h, 1.0h)); 
-	
-#ifdef ALLOY_ENABLE_SURFACE_SPECULAR_TINT
-	// Brent Burley's approach to tinted dielectric specular.
-	// Subject to Apache License, version 2.0
-	// cf https://github.com/wdas/brdf/blob/master/src/brdfs/disney.brdf
-	half3 tint = AlloyChromaticity(baseColor);
-	dielectricF0 *= LerpWhiteTo(tint, s.specularTint);
-#endif
-	
-	s.albedo = baseColor * metallicInv;
-	s.f0 = lerp(dielectricF0, baseColor, s.metallic);
-	
-#ifdef ALLOY_ENABLE_SURFACE_CLEARCOAT
-	// Specularity of 0.5 gives us a polyurethane like coating.
-	s.f0 += AlloySpecularityToF0(0.5h * s.clearCoatWeight);
-	s.f0 = min(s.f0, half3(1.0h, 1.0h, 1.0h)); 
-	s.roughness = lerp(s.roughness, s.clearCoatRoughness, s.clearCoatWeight);
-#endif
-#ifdef _ALPHAPREMULTIPLY_ON
-	// Interpolate from a translucent dielectric to an opaque metal.
-	s.opacity = s.metallic + metallicInv * s.opacity;
-	
-	// Premultiply opacity with albedo for translucent shaders.
-	s.albedo *= s.opacity;
+#ifndef _SPEC_ROUGH_SETUP
+		half metallicInv = 1.0h - s.metallic;
+		half3 dielectricF0 = AlloySpecularityToF0(s.specularity);
+		
+		// Ensures energy-conserving color when using weird detail modes.
+		half3 baseColor = min(s.baseColor, half3(1.0h, 1.0h, 1.0h)); 
+		
+	#ifdef ALLOY_ENABLE_SURFACE_SPECULAR_TINT
+		// Brent Burley's approach to tinted dielectric specular.
+		// Subject to Apache License, version 2.0
+		// cf https://github.com/wdas/brdf/blob/master/src/brdfs/disney.brdf
+		half3 tint = AlloyChromaticity(baseColor);
+		dielectricF0 *= LerpWhiteTo(tint, s.specularTint);
+	#endif
+		
+		s.albedo = baseColor * metallicInv;
+		s.f0 = lerp(dielectricF0, baseColor, s.metallic);
+
+
+	#ifdef ALLOY_ENABLE_SURFACE_CLEARCOAT
+		// Specularity of 0.5 gives us a polyurethane like coating.
+		s.f0 += AlloySpecularityToF0(0.5h * s.clearCoatWeight);
+		s.f0 = min(s.f0, half3(1.0h, 1.0h, 1.0h)); 
+		s.roughness = lerp(s.roughness, s.clearCoatRoughness, s.clearCoatWeight);
+	#endif
+
+	#ifdef _ALPHAPREMULTIPLY_ON
+		// Interpolate from a translucent dielectric to an opaque metal.
+		s.opacity = s.metallic + metallicInv * s.opacity;
+		
+		// Premultiply opacity with albedo for translucent shaders.
+		s.albedo *= s.opacity;
+	#endif
+
+#else //specularity setup
+	half3 baseColor = min(s.baseColor, half3(1.0h, 1.0h, 1.0h));
+	s.albedo = baseColor;
+	//s.f0 = 0;
+
+	#ifdef ALLOY_ENABLE_SURFACE_CLEARCOAT
+		// Specularity of 0.5 gives us a polyurethane like coating.
+		s.f0 += AlloySpecularityToF0(0.5h * s.clearCoatWeight);
+		s.f0 = min(s.f0, half3(1.0h, 1.0h, 1.0h)); 
+		s.roughness = lerp(s.roughness, s.clearCoatRoughness, s.clearCoatWeight);
+	#endif
+
+	#ifdef _ALPHAPREMULTIPLY_ON
+		// Premultiply opacity with albedo for translucent shaders.
+		s.albedo *= s.opacity;
+	#endif
+
 #endif
 }
 

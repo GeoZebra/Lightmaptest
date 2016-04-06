@@ -52,25 +52,34 @@ void AlloySurface(
 	AlloyCutout(s);
 	
     half4 material = 0.0h;
+
+    #ifndef _SPEC_ROUGH_SETUP
     
-#ifdef ALLOY_ENABLE_PROTOTYPING
-	// Assumes that the user hasn't changed the textures' default import settings.
-	// So we assume the system applied the sRGB curve, and we need to undo it.
-	material.x = tex2D(_MetallicMap, s.baseUv).g; 
-	material.z = tex2D(_SpecularityMap, s.baseUv).g;
-	material.w = tex2D(_RoughnessMap, s.baseUv).g;
-	material.xzw = AlloyLinearToGamma(material.xzw);
-	material.y = LerpOneTo(tex2D(_AoMap, s.baseUv).g, _Occlusion); // This one needs to stay linear.
-#else
-	material = AlloySampleBaseMaterial(s);
-	material.y = AlloyBaseAmbientOcclusion(material.y); 
-#endif
-	
-	s.metallic = _Metal * material.x;
-	s.ambientOcclusion = material.y;
-	s.specularity = _Specularity * material.z;
-	s.roughness = _Roughness * material.w;
-	
+		#ifdef ALLOY_ENABLE_PROTOTYPING
+			// Assumes that the user hasn't changed the textures' default import settings.
+			// So we assume the system applied the sRGB curve, and we need to undo it.
+			material.x = tex2D(_MetallicMap, s.baseUv).g; 
+			material.z = tex2D(_SpecularityMap, s.baseUv).g;
+			material.w = tex2D(_RoughnessMap, s.baseUv).g;
+			material.xzw = AlloyLinearToGamma(material.xzw);
+			material.y = LerpOneTo(tex2D(_AoMap, s.baseUv).g, _Occlusion); // This one needs to stay linear.
+		#else
+			material = AlloySampleBaseMaterial(s);
+			material.y = AlloyBaseAmbientOcclusion(material.y); 
+		#endif
+
+		s.metallic = _Metal * material.x;
+		s.ambientOcclusion = material.y;
+		s.specularity = _Specularity * material.z;
+		s.roughness = _Roughness * material.w;
+	#else
+
+		// specularity setup
+		material = AlloySampleBaseMaterial(s);
+		s.f0 = material.rgb * _Specularity;
+		s.roughness = material.a * _Roughness;
+
+	#endif
 	s.normalTangent = AlloySampleBaseBump(s);
 
 	AlloyAo2(s);

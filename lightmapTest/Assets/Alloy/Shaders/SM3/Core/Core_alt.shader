@@ -2,20 +2,9 @@
 // Copyright 2013-2015 RUST LLC.
 // http://www.alloy.rustltd.com/
 
-Shader "Alloy/Core-ExternalLightmap" {
+Shader "Alloy/Core-ExternalLightmap" {  
 Properties {
 
-	[Toggle(EXLIGHTMAP)] 
-        _exlightmap ("'External Lightamp' {Feature:{240,128,0}}", Float) = 0    
-	_externLightmap ("'ExternalLightmap' {}", 2D) = "Black" {}   
-	_exLMIntensity ("'LM Intensity' {}", Float) = 1
-	_exLmAOeffect ("'LM ao effect' {}", Float) = 0
-	_unityDiffuseLMEffect ("'Unity Diffuse LM Effect' {}", Float) = 0
-	_exLM_HDRcoef("'RGBM HDR coef' {}", vector) = (40,2.2,0,0)
-	[Toggle]
-	_LmUseUV1  ("'Use UV1 for LM' {Toggle:{}}", Float) = 0
-	[Toggle]
-	_LM_Format_RGBM  ("'use RGBM Format' {Toggle:{}}", Float) = 1
 
 
 	// Settings
@@ -50,6 +39,18 @@ Properties {
 	_Roughness ("'Roughness' {Min:0, Max:1}", Float) = 0.5
 	_Occlusion ("'Occlusion Strength' {Min:0, Max:1}", Float) = 1
 	_BumpScale ("'Normal Strength' {}", Float) = 1
+
+	[Toggle(EXLIGHTMAP)] 
+    _exlightmap ("'External Lightamp' {Feature:{240,128,0}}", Float) = 0    
+	_externLightmap ("'ExternalLightmap' {}", 2D) = "Black" {}   
+	_exLMIntensity ("'LM Intensity' {}", Float) = 1
+	_exLmAOeffect ("'LM ao effect' {}", Float) = 0
+	_unityDiffuseLMEffect ("'Unity Diffuse LM Effect' {}", Float) = 0
+	_exLM_HDRcoef("'RGBM HDR coef' {}", vector) = (40,2.2,0,0)
+	[Toggle]
+	_LmUseUV1  ("'Use UV1 for LM' {Toggle:{}}", Float) = 0
+	[Toggle]
+	_LM_Format_RGBM  ("'use RGBM Format' {Toggle:{}}", Float) = 1 
 	
 	// Parallax Properties
 	[Toggle(_PARALLAX_ON)]
@@ -173,6 +174,7 @@ SubShader {
 		#pragma shader_feature _EMISSION
 		#pragma shader_feature _RIM_ON
 		#pragma shader_feature _DISSOLVE_ON
+		#pragma shader_feature SPEC_ROUGH_SETUP
 		
 		#pragma multi_compile_fwdbase
 		#pragma multi_compile_fog
@@ -211,6 +213,7 @@ SubShader {
 		#pragma shader_feature _TEAMCOLOR_ON
 		#pragma shader_feature _DECAL_ON
 		#pragma shader_feature _DISSOLVE_ON
+		#pragma shader_feature SPEC_ROUGH_SETUP
 		
 		#pragma multi_compile_fwdadd_fullshadows
 		#pragma multi_compile_fog
@@ -268,6 +271,7 @@ SubShader {
 		#pragma shader_feature _EMISSION
 		#pragma shader_feature _RIM_ON
 		#pragma shader_feature _DISSOLVE_ON
+		#pragma shader_feature SPEC_ROUGH_SETUP
 		
 		#pragma multi_compile_prepassfinal
 
@@ -291,7 +295,7 @@ SubShader {
 
 		CGPROGRAM
 		#pragma target 3.0
-		#pragma exclude_renderers nomrt gles
+		#pragma exclude_renderers nomrt gles 
 		
 		#pragma shader_feature _DETAIL_ON
 		#pragma shader_feature _TEAMCOLOR_ON
