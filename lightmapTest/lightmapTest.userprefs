@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_ProjectRoot\Shader\UnlitShader.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Alloy\Shaders\SM3\Core\Core_externalLightmap.shader">
     <Files>
-      <File FileName="Assets\_ProjectRoot\Shader\UnlitShader.shader" Line="10" Column="3" />
-      <File FileName="Assets\Alloy\Shaders\SM3\Core\Core_alt.shader" Line="8" Column="17" />
+      <File FileName="Assets\Alloy\Shaders\SM3\Core\Core_externalLightmap.shader" Line="8" Column="1" />
+      <File FileName="Assets\Alloy\Shaders\Framework\Lighting.cginc" Line="1" Column="1" />
+      <File FileName="Assets\_ProjectRoot\Shader\UnlitShader.shader" Line="1" Column="1" />
       <File FileName="Assets\Alloy\Shaders\Framework\ExternalLightmap.cginc" Line="18" Column="1" />
+      <File FileName="Assets\Alloy\Scripts\MaterialInspectors\Editor\FieldBased\AlloyFieldBasedEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Alloy\Shaders\SM3\Core\Core_SpecularitySetup.shader" Line="54" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

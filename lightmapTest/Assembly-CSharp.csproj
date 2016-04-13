@@ -58,7 +58,6 @@
      <None Include="Assets\Alloy\Shaders\Features\TransitionBlend.cginc" />
      <None Include="Assets\Alloy\Shaders\Features\Cutout.cginc" />
      <None Include="Assets\Alloy\Shaders\Framework\Deferred.cginc" />
-     <None Include="Assets\_ProjectRoot\Shader\UnlitShader.shader" />
      <None Include="Assets\Alloy\Shaders\SM3\VisualEffects\Particle Alpha Blend.shader" />
      <None Include="Assets\Alloy\LINK TO SAMPLES DOWNLOAD.txt" />
      <None Include="Assets\Alloy\ALLOY MODS README.txt" />
